@@ -20,4 +20,11 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('addProject', 'UserController@addProject');
     $router->put('updateData/{id}', 'UserController@updateData');
     $router->delete('deleteData/{id}', 'UserController@deleteData');
+
+    $router->get('getEmployeeAll', 'UserController@getEmployeetDetail');
+    $router->post('addEmployee', 'UserController@addEmployee');
+    $router->put('updateEmployeeData/{id}', 'UserController@updateEmployeeData');
+    $router->delete('deleteEmployeeData/{id}', 'UserController@deleteEmployeeData');
+
+
 });
