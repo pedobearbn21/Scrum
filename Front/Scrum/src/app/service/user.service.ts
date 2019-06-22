@@ -14,7 +14,7 @@ export class UserService {
 
   getProjectDeatil() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getAll')
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getAll' )
         .subscribe(data => {
           resolve(data);
         }, error => {
@@ -62,4 +62,51 @@ export class UserService {
         });
     });
   }
+
+
+  getEmployeetDetail() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getEmployeeAll' )
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  addEmployee(datavalue) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/addEmployee', datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  updateEmployeeData(datavalue, id) {
+    return new Promise((resolve, reject) => {
+      this.http.put('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/updateEmployee/' + id, datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  deleteEmployeeData(id) {
+    return new Promise((resolve, reject) => {
+      this.http.delete('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/deleteEmployeeData/' + id, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+
+
+
+
 }

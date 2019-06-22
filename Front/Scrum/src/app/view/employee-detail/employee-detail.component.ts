@@ -1,15 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
+import { UserService } from '../../service/user.service';
+import { Employee } from 'src/app/model/employee/employee';
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.scss']
 })
 export class EmployeeDetailComponent implements OnInit {
-
-  constructor() { }
+  stockdata =  Employee;
+  elements: any = [];
+  headElements = ['id', 'EmployeeName', 'EmployeeEmail'];
+  constructor(private userService: UserService) {
+    this.getEmployeetDetail();
+  }
 
   ngOnInit() {
+  }
+  getEmployeetDetail() {
+    this.userService.getEmployeetDetail().then((data: any) => {
+      console.log(data);
+      this.elements = data.data;
+    });
+  }
+  addEmployee(data1: NgForm) {
+    this.userService.addEmployee(data1).then((data: any) => {
+      this.getEmployeetDetail();
+    });
+  }
+  deleteData(id) {
+    this.userService.deleteEmployeeData(id).then((data: any) => {
+      this.getEmployeetDetail();
+    });
+  }
+  updateData(id, dataform: NgForm) {
+    this.userService.updateEmployeeData(dataform, id).then((data: any) => {
+      this.getEmployeetDetail();
+    });
+  }
+  getforupdate(data) {
+    this.stockdata = data;
+    console.log(this.stockdata);
   }
 
 }

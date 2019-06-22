@@ -1,13 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 mx-auto">
-      <div class="md-form">
-        <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
-        <label for="search">Search</label>
+      <div class="col">
+          <div class="md-form">
+              <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+              <label for="search">Search</label>
+            </div>
+      </div>
+      <div class="col-12 col-md-auto">
+      </div>
+      <div class="col col-lg-2" style="margin: auto;">
+          <button mdbBtn type="button" color="warning" outline="true" size= "sm" (click)='inputModal.show()' mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
       </div>
     </div>
-  </div>
-  <table mdbTable class="z-depth-1">
+
+<div class="table-responsive">
+  <table mdbTable class="table">
     <thead>
     <tr>
       <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
@@ -20,10 +27,71 @@
       <td class="red-text">{{el.ProjectName}}</td>
       <td>{{el.Description}}</td>
       <td class="clearfix">
-        <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el) ;" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
+        <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
         <button type="button" class="btn btn-danger btn-sm" (click)='deleteData(el.id)'><i class="far fa-trash-alt"></i></button>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
+</div>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Update Data</h4>
+      </div>
+      <form #data=ngForm (ngSubmit)='updateData(stockdata.id,data.value)'>
+      <div class="modal-body">
+        <div class="md-form">
+          <input type="text" name="ProjectName" [(ngModel)]="stockdata.ProjectName" id="materialLoginFormEmail1" class="form-control" mdbInput>
+          <label for="materialLoginFormEmail1">ProjectName</label>
+        </div>
+        <div class="md-form">
+          <input type="text" name="Description" [(ngModel)]="stockdata.Description" id="materialLoginFormEmail2" class="form-control" mdbInput>
+          <br/>
+          <label for="materialLoginFormEmail2">Description</label>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)='basicModal.hide()' mdbWavesEffect>Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div mdbModal #inputModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="inputModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Update Project</h4>
+        </div>
+        <form #data=ngForm (ngSubmit)='addProject(data.value)'>
+        <div class="modal-body">
+          <div class="md-form">
+            <input type="text" name="ProjectName" [(ngModel)]="data.ProjectName" id="materialLoginFormEmail1" class="form-control" mdbInput>
+            <label for="materialLoginFormEmail1">ProjectName</label>
+          </div>
+          <div class="md-form">
+            <input type="text" name="Description" [(ngModel)]="data.Description" id="materialLoginFormEmail2" class="form-control" mdbInput>
+            <br/>
+            <label for="materialLoginFormEmail2">Description</label>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="inputModal.hide()" mdbWavesEffect>Close</button>
+          <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)='inputModal.hide()' mdbWavesEffect>Save changes</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>

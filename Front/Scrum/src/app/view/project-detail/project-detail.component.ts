@@ -2,6 +2,7 @@ import {Component, HostListener, ViewChild, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {MdbTableDirective} from 'angular-bootstrap-md';
 import { UserService } from '../../service/user.service';
+import { Project } from '../../model/project/project';
 @Component({
   selector: 'app-project-detail',
   templateUrl: './project-detail.component.html',
@@ -11,9 +12,10 @@ export class ProjectDetailComponent implements OnInit {
 
   mdbTable: MdbTableDirective;
   elements: any = [];
-  headElements = ['id', 'ProjectName', 'Description', ''];
-
+  headElements = ['id', 'ProjectName', 'Description'];
+  stockdata = Project;
   searchText = '';
+  name = 'project';
   previous: string ;
 
   constructor(private userService: UserService) {
@@ -47,7 +49,10 @@ export class ProjectDetailComponent implements OnInit {
         this.getProjectDeatil();
       });
     }
-
+    getforupdate(data) {
+      this.stockdata = data;
+      console.log(this.stockdata);
+    }
   searchItems() {
   }
 }
