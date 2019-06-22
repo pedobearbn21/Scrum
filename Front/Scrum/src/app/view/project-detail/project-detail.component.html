@@ -1,3 +1,29 @@
-<p>
-  project-detail works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <div class="md-form">
+        <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+        <label for="search">Search</label>
+      </div>
+    </div>
+  </div>
+  <table mdbTable class="z-depth-1">
+    <thead>
+    <tr>
+      <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let el of elements; let i = index">
+      <th scope="row">{{el.id}}</th>
+      <td class="red-text">{{el.ProjectName}}</td>
+      <td>{{el.Description}}</td>
+      <td class="clearfix">
+        <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el) ;" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
+        <button type="button" class="btn btn-danger btn-sm" (click)='deleteData(el.id)'><i class="far fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
