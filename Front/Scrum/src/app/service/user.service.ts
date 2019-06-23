@@ -192,6 +192,49 @@ export class UserService {
 
 
 
+  getissueDetail() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getissueDetail' )
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  addissue(datavalue) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/addissue', datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  updateissueData(datavalue, id) {
+    return new Promise((resolve, reject) => {
+      this.http.put('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/updateissueData/' + id, datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  deleteissueData(id) {
+    return new Promise((resolve, reject) => {
+      this.http.delete('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/deleteissueData/' + id, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+
+
 
 
 }

@@ -4,12 +4,14 @@ import { EmployeeDetailComponent } from '../app/view/employee-detail/employee-de
 import { ProjectDetailComponent } from '../app/view/project-detail/project-detail.component';
 import { WorkCateComponent } from '../app/view/work-cate/work-cate.component';
 import { WorkStatusComponent } from '../app/view/work-status/work-status.component';
+import { IssueComponent } from './view/issue/issue.component';
 
 const routes: Routes = [
   { path: 'app-employee-detail', component: EmployeeDetailComponent },
   { path: 'app-project-detail', component: ProjectDetailComponent },
   { path: 'app-work-cate', component: WorkCateComponent },
   { path: 'app-work-status', component: WorkStatusComponent },
+  { path: 'app-issue', component: IssueComponent },
 ];
 
 @NgModule({

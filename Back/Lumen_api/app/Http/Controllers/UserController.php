@@ -4,6 +4,7 @@ use App\project;
 use App\employee;
 use App\workcate;
 use App\status;
+use App\issue;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 class UserController extends Controller
@@ -154,6 +155,34 @@ class UserController extends Controller
         return $this->responseSuccess($data);
     }
 
+
+
+    public function getissueDetail()
+    {
+        $data = issue::all();
+        return $this->responseSuccess($data);
+    }
+    public function addissue(Request $request)
+    {
+        $data = new issue();
+        $data->issuename = $request->issuename;
+        if ($data->save()){
+            return $this->responseSuccess($data);
+        }
+    }
+    public function updateissueData(Request $request, $id)
+    {
+        $data = issue::where('id', $id)->first();
+        $data->issuename = $request->issuename;
+        if ($data->save()){
+            return $this->responseSuccess($data);
+        }
+    }
+    public function deleteissueData($id)
+    {
+        $data = issue::where('id', $id)->delete();
+        return $this->responseSuccess($data);
+    }
 
 
 
