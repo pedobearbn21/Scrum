@@ -36,5 +36,10 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('updateStatusData/{id}', 'UserController@updateStatusData');
     $router->delete('deleteStatusData/{id}', 'UserController@deleteStatusData');
 
+    $router->get('getissueDetail', 'UserController@getissueDetail');
+    $router->post('addissue', 'UserController@addissue');
+    $router->put('updateissueData/{id}', 'UserController@updateissueData');
+    $router->delete('deleteissueData/{id}', 'UserController@deleteissueData');
+
 
 });
