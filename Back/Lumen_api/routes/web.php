@@ -26,5 +26,15 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('updateEmployeeData/{id}', 'UserController@updateEmployeeData');
     $router->delete('deleteEmployeeData/{id}', 'UserController@deleteEmployeeData');
 
+    $router->get('getworkcatedetail', 'UserController@getworkcatedetail');
+    $router->post('addworkcate', 'UserController@addworkcate');
+    $router->put('updateworkcateData/{id}', 'UserController@updateworkcateData');
+    $router->delete('deleteworkcateData/{id}', 'UserController@deleteworkcateData');
+
+    $router->get('getStatusDetail', 'UserController@getStatusDetail');
+    $router->post('addStatus', 'UserController@addStatus');
+    $router->put('updateStatusData/{id}', 'UserController@updateStatusData');
+    $router->delete('deleteStatusData/{id}', 'UserController@deleteStatusData');
+
 
 });

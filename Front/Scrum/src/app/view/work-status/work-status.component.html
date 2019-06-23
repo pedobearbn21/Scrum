@@ -1,3 +1,86 @@
-<p>
-  work-status works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="md-form">
+                <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+                <label for="search">Search</label>
+              </div>
+        </div>
+        <div class="col-12 col-md-auto">
+        </div>
+        <div class="col col-lg-2" style="margin: auto;">
+            <button mdbBtn type="button" color="warning" outline="true" size= "sm" (click)='inputModal.show()' mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
+        </div>
+      </div>
+  
+  <div class="table-responsive">
+    <table mdbTable class="table">
+      <thead>
+      <tr>
+        <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let el of elements; let i = index">
+        <th scope="row">{{el.id}}</th>
+        <td class="red-text">{{el.Status}}</td>
+        <td class="clearfix">
+          <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
+          <button type="button" class="btn btn-danger btn-sm" (click)='deleteStatusData(el.id)'><i class="far fa-trash-alt"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Update Status</h4>
+        </div>
+        <form #data=ngForm (ngSubmit)='updateStatusData(stockdata.id,data.value)'>
+        <div class="modal-body">
+          <div class="md-form">
+            <input type="text" name="Status" [(ngModel)]="data.Status" id="materialLoginFormEmail1" class="form-control" mdbInput>
+            <label for="materialLoginFormEmail1">Status</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+          <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)='basicModal.hide()' mdbWavesEffect>Save changes</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #inputModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="inputModal.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title w-100" id="myModalLabel">Add StatusWork</h4>
+          </div>
+          <form #data=ngForm (ngSubmit)='addStatus(data.value)'>
+          <div class="modal-body">
+            <div class="md-form">
+              <input type="text" name="Status" [(ngModel)]="data.Status" id="materialLoginFormEmail1" class="form-control" mdbInput>
+              <label for="materialLoginFormEmail1">Status</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="inputModal.hide()" mdbWavesEffect>Close</button>
+            <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)='inputModal.hide()' mdbWavesEffect>Save changes</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
