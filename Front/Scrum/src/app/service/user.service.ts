@@ -107,6 +107,91 @@ export class UserService {
 
 
 
+  getworkcatedetail() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getworkcatedetail' )
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  addworkcate(datavalue) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/addworkcate', datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  updateworkcateData(datavalue, id) {
+    return new Promise((resolve, reject) => {
+      this.http.put('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/updateworkcateData/' + id, datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  deleteworkcateData(id) {
+    return new Promise((resolve, reject) => {
+      this.http.delete('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/deleteworkcateData/' + id, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+
+  getStatusDetail() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getStatusDetail' )
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  addStatus(datavalue) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/addStatus', datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  updateStatusData(datavalue, id) {
+    return new Promise((resolve, reject) => {
+      this.http.put('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/updateStatusData/' + id, datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  deleteStatusData(id) {
+    return new Promise((resolve, reject) => {
+      this.http.delete('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/deleteStatusData/' + id, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+
+
 
 
 }
