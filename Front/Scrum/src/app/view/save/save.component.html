@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col">
+        <div class="md-form">
+            <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+            <label for="search">Search</label>
+          </div>
+    </div>
+    <div class="col-12 col-md-auto">
+    </div>
+    <div class="col col-lg-2" style="margin: auto;">
+        <button mdbBtn type="button" color="warning" outline="true" size= "sm"  mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
+    </div>
+  </div>
+<table class="table">
+    <thead class="black white-text">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Del</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>
+            <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
+        </td>
+        <td class="clearfix">
+            <button type="button" class="btn btn-danger btn-sm" (click)='deleteData(el.id)'><i class="far fa-trash-alt"></i></button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
