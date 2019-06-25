@@ -5,13 +5,14 @@ import { ProjectDetailComponent } from '../app/view/project-detail/project-detai
 import { WorkCateComponent } from '../app/view/work-cate/work-cate.component';
 import { WorkStatusComponent } from '../app/view/work-status/work-status.component';
 import { IssueComponent } from './view/issue/issue.component';
-
+import { SavedailyComponent } from './view/savedaily/savedaily.component';
 const routes: Routes = [
   { path: 'app-employee-detail', component: EmployeeDetailComponent },
   { path: 'app-project-detail', component: ProjectDetailComponent },
   { path: 'app-work-cate', component: WorkCateComponent },
   { path: 'app-work-status', component: WorkStatusComponent },
   { path: 'app-issue', component: IssueComponent },
+  { path: 'app-savedaily', component: SavedailyComponent },
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
-
+import {CdkTreeModule} from '@angular/cdk/tree';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjectDetailComponent } from './view/project-detail/project-detail.component';
@@ -13,6 +13,8 @@ import { WorkCateComponent } from './view/work-cate/work-cate.component';
 import { WorkStatusComponent } from './view/work-status/work-status.component';
 import { IssueComponent } from './view/issue/issue.component';
 import { SidenavComponent } from './view/sidenav/sidenav.component';
+import { SaveComponent } from './view/save/save.component';
+import { SavedailyComponent } from './view/savedaily/savedaily.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { SidenavComponent } from './view/sidenav/sidenav.component';
     WorkCateComponent,
     WorkStatusComponent,
     IssueComponent,
-    SidenavComponent
+    SidenavComponent,
+    SaveComponent,
+    SavedailyComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { SidenavComponent } from './view/sidenav/sidenav.component';
     BrowserAnimationsModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    CdkTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
