@@ -8,17 +8,13 @@
     <label for="select">พนักงาน</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกพนักงาน</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <option *ngFor="let item of items" value='item'>{{item}}</option>
     </select>
 
     <label for="select">งานที่ทำเมื่อวาน</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกงาน</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <option *ngFor="let item of items" value='item'>{{item}}</option>
     </select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
     <div *ngFor='let data of work'>
@@ -29,9 +25,7 @@
     <label for="select">ปัญหาที่ติด</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกปัญหา</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <option *ngFor="let item of items" value='item'>{{item}}</option>
     </select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
     <div *ngFor='let data of addissue'>
@@ -41,9 +35,7 @@
     <label for="select">งานที่จะทำ</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกงาน</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <option *ngFor="let item of items" value='item'>{{item}}</option>
     </select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
 </form>
