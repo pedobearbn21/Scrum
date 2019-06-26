@@ -30,9 +30,11 @@ export class WorkCateComponent implements OnInit {
     });
   }
   deleteworkcateData(id) {
+    if (confirm('')) {
     this.userService.deleteworkcateData(id).then((data: any) => {
       this.getworkcatedetail();
     });
+  }
   }
   updateworkcateData(id, dataform: NgForm) {
     console.log(dataform);

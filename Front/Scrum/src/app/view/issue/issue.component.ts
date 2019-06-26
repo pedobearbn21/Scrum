@@ -28,9 +28,11 @@ export class IssueComponent implements OnInit {
     });
   }
   deleteissueData(id) {
+    if (confirm('')) {
     this.userService.deleteissueData(id).then((data: any) => {
       this.getissueDetail();
     });
+  } else {}
   }
   updateissueData(id, dataform: NgForm) {
     this.userService.updateissueData(dataform, id).then((data: any) => {
