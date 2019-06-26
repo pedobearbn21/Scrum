@@ -29,9 +29,12 @@ export class EmployeeDetailComponent implements OnInit {
     });
   }
   deleteData(id) {
-    this.userService.deleteEmployeeData(id).then((data: any) => {
-      this.getEmployeetDetail();
-    });
+    if (confirm('')) {
+      this.userService.deleteEmployeeData(id).then((data: any) => {
+        this.getEmployeetDetail();
+      });
+    } else {
+    }
   }
   updateData(id, dataform: NgForm) {
     this.userService.updateEmployeeData(dataform, id).then((data: any) => {

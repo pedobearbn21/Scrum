@@ -28,9 +28,11 @@ export class WorkStatusComponent implements OnInit {
     });
   }
   deleteStatusData(id) {
+    if (confirm('')) {
     this.userService.deleteStatusData(id).then((data: any) => {
       this.getStatusDetail();
     });
+  }
   }
   updateStatusData(id, dataform: NgForm) {
     this.userService.updateStatusData(dataform, id).then((data: any) => {

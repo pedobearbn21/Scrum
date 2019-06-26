@@ -40,9 +40,11 @@ export class ProjectDetailComponent implements OnInit {
       });
     }
     deleteData(id) {
+      if (confirm('')) {
       this.userService.deleteData(id).then((data: any) => {
         this.getProjectDeatil();
       });
+      } else {}
     }
     updateData(id, dataform: NgForm) {
       this.userService.updateData(dataform, id).then((data: any) => {
