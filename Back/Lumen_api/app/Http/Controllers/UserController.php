@@ -5,6 +5,7 @@ use App\employee;
 use App\workcate;
 use App\status;
 use App\issue;
+use App\daily;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 class UserController extends Controller
@@ -20,6 +21,19 @@ class UserController extends Controller
     public function __construct()
     {
         //
+    }
+    public function savedaily()
+    {
+        $data = new daily();
+        $data->employee = $request->employee;
+        $data->yesterwork = $request->yesterdaywork;
+        $data->issuework = $request->issuework;
+        $data->todowork = $request->todowork;
+    }
+    public function getdaily()
+    {
+        $data = daily::all();
+        return $this->responseSuccess($data);
     }
     public function getAll()
     {
