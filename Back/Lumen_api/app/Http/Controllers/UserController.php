@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         //
     }
-    public function savedaily()
+    public function savedaily(Request $request)
     {
         $data = new daily();
         $data->employee = $request->employee;
