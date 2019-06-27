@@ -2,19 +2,19 @@
     <button type="button" class="close pull-right" aria-label="Close" routerLink ="/app-save">
         <span aria-hidden="true">×</span>
     </button>
-    <div class="h4 mb-4 text-center">Sign in</div>
+    <div class="h4 mb-4 text-center">date</div>
     <p></p>
 
     <label for="select">พนักงาน</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกพนักงาน</option>
-        <option *ngFor="let item of items" value='item'>{{item}}</option>
+        <option *ngFor="let item of employee" value='item'>{{item.EmployeeName}}</option>
     </select>
 
     <label for="select">งานที่ทำเมื่อวาน</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกงาน</option>
-        <option *ngFor="let item of items" value='item'>{{item}}</option>
+        <option *ngFor="let item of workcate" value='item'>{{item.workcatename}}</option>
     </select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
     <div *ngFor='let data of work'>
@@ -25,7 +25,7 @@
     <label for="select">ปัญหาที่ติด</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกปัญหา</option>
-        <option *ngFor="let item of items" value='item'>{{item}}</option>
+        <option *ngFor="let item of issue" value='item'>{{item.issuename}}</option>
     </select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
     <div *ngFor='let data of addissue'>
@@ -35,7 +35,7 @@
     <label for="select">งานที่จะทำ</label>
     <select class="browser-default custom-select mb-4" id="select">
         <option value="" disabled="" selected="">เลือกงาน</option>
-        <option *ngFor="let item of items" value='item'>{{item}}</option>
+        <option *ngFor="let item of workcate" value='item'>{{item.workcatename}}</option>
     </select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
 </form>
