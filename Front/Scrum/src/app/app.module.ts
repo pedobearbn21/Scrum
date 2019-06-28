@@ -15,7 +15,10 @@ import { IssueComponent } from './view/issue/issue.component';
 import { SidenavComponent } from './view/sidenav/sidenav.component';
 import { SaveComponent } from './view/save/save.component';
 import { SavedailyComponent } from './view/savedaily/savedaily.component';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { TesttableComponent } from './view/testtable/testtable.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { SavedailyComponent } from './view/savedaily/savedaily.component';
     IssueComponent,
     SidenavComponent,
     SaveComponent,
-    SavedailyComponent
+    SavedailyComponent,
+    TesttableComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import { SavedailyComponent } from './view/savedaily/savedaily.component';
     FormsModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
-    CdkTreeModule
+    CdkTreeModule,
+    MatPaginatorModule,
+    NgbPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
