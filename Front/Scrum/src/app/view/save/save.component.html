@@ -8,7 +8,7 @@
     <div class="col-12 col-md-auto">
     </div>
     <div class="col col-lg-2" style="margin: auto;">
-        <button mdbBtn type="button" color="warning" outline="true" size= "sm" routerLink ="/app-savedaily" mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
+        <button mdbBtn type="button" color="warning" outline="true" size= "sm" (click)="expression" mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
     </div>
   </div>
 <table class="table">
@@ -23,9 +23,9 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>2019-06-19</td>
+        <a routerLink ="/app-savedaily"><td>2019-06-19</td></a>
         <td>
-            <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
+            <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" routerLink ="/app-savedaily" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
         </td>
         <td class="clearfix">
             <button type="button" class="btn btn-danger btn-sm" (click)='deleteData(el.id)'><i class="far fa-trash-alt"></i></button>
