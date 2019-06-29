@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="md-form">
-                <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+            <div class="md-form ng" (event) = "gettext(searchText)" >
+                <input type="text"   [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
                 <label for="search">Search</label>
-              </div>
+            </div>
         </div>
         <div class="col-12 col-md-auto">
         </div>
@@ -12,7 +12,6 @@
             <button mdbBtn type="button" color="warning" outline="true" size= "sm" (click)='inputModal.show()' mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
         </div>
       </div>
-  
   <div class="table-responsive">
     <table mdbTable class="table">
       <thead>
@@ -22,32 +21,21 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let el of elements | filter: searchText">
-        <th scope="row">{{el.id}}</th>
-        <td class="red-text">{{el.EmployName}}</td>
-        <td>{{el.EmployEmail}}</td>
-        <td class="clearfix">
-          <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
-          <button type="button" class="btn btn-danger btn-sm" (click)='deleteData(el.id);'><i class="far fa-trash-alt"></i></button>
-        </td>
-      </tr>
+          <tr *ngFor="let el of elements | filter: searchText">
+            <th scope="row">{{el.id}}</th>
+            <td class="red-text">{{el.EmployName}}</td>
+            <td>{{el.EmployEmail}}</td>
+            <td class="clearfix">
+              <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>
+              <button type="button" class="btn btn-danger btn-sm" (click)='deleteData(el.id);'><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
       </tbody>
-      <div class="d-flex justify-content-between p-2">
-        <ngb-pagination [collectionSize]="elements.length" [(page)]="page" [pageSize]="pageSize">
-        </ngb-pagination>
-        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
-          <option [ngValue]="2">2 items per page</option>
-          <option [ngValue]="4">4 items per page</option>
-          <option [ngValue]="6">6 items per page</option>
-        </select>
-      </div>
-        <p>{{elements.length}} {{page}} {{pageSize}} {{collectionSize}} </p>
-        ng {{ a }}
     </table>
-    
+
   </div>
   </div>
-  
+
   <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
