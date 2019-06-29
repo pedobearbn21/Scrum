@@ -18,7 +18,7 @@ import { SavedailyComponent } from './view/savedaily/savedaily.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { TesttableComponent } from './view/testtable/testtable.component';
-import { FilterPipe } from './filter.pipe';
+import { FilterPipe } from './model/filter.pipe';
 
 @NgModule({
   declarations: [

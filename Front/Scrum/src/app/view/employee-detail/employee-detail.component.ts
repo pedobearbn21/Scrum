@@ -10,6 +10,7 @@ import { Employee } from 'src/app/model/employee/employee';
 export class EmployeeDetailComponent implements OnInit {
   stockdata =  Employee;
   elements: any = [];
+  searchText: string;
   headElements = ['id', 'EmployeeName', 'EmployeeEmail'];
   constructor(private userService: UserService) {
     this.getEmployeetDetail();
@@ -45,5 +46,13 @@ export class EmployeeDetailComponent implements OnInit {
     this.stockdata = data;
     console.log(this.stockdata);
   }
+  gettext(text) {
+    console.log(text);
+    this.searchText = text;
+  }
+  async searchtext() {
+    await this.gettext(this.searchText);
+  }
 
 }
+
