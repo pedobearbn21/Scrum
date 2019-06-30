@@ -15,6 +15,8 @@ export class ProjectDetailComponent implements OnInit {
   headElements = ['id', 'ProjectName', 'Description'];
   stockdata = Project;
   searchText = '';
+  p = 1;
+  selected = 5;
   name = 'project';
   previous: string ;
 

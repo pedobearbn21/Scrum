@@ -10,6 +10,8 @@ export class WorkStatusComponent implements OnInit {
   stockdata: any;
   elements: any = [];
   headElements = ['id', 'Status'];
+  p = 1;
+  selected = 5;
   constructor(private userService: UserService) {
     this.getStatusDetail();
    }
