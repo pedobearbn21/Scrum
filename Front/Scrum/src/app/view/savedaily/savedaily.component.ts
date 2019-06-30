@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
+import { NgControl } from '@angular/forms';
 @Component({
   selector: 'app-savedaily',
   templateUrl: './savedaily.component.html',
@@ -11,6 +12,14 @@ export class SavedailyComponent implements OnInit {
   project: any;
   workcate: any;
   status: any;
+  employdata: any = [];
+  yesterdaywork: any = [];
+  issuework: any = [];
+  todowork: any = [];
+  selected: any;
+  workselected: any;
+  issueselected: any;
+  workcateselected: any;
   constructor(private userService: UserService) {
     this.getEmployeetDetail();
     this.getProjectDeatil();
@@ -20,6 +29,20 @@ export class SavedailyComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  addemploydata(data) {
+    console.log(data);
+    this.employdata.push(data);
+    console.log(this.employdata);
+  }
+  addyesterdaywork(data) {
+    this.yesterdaywork.push(data);
+  }
+  addissuework(data) {
+    this.issuework.push(data);
+  }
+  addtodowork(data) {
+    this.todowork.push(data);
   }
   getEmployeetDetail() {
     this.userService.getEmployeetDetail().then((data: any) => {
