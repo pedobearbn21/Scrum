@@ -1,41 +1,56 @@
-<form class="border border-light p-5" #data ='ngForm' (ngSubmit)='adddata(data.value)'>
+<form class="border border-light p-5" (ngSubmit)="addemploydata(selected)">
     <button type="button" class="close pull-right" aria-label="Close" routerLink ="/app-save">
         <span aria-hidden="true">×</span>
     </button>
-    <div class="h4 mb-4 text-center">date</div>
+    <div class="h4 mb-4 text-center" ></div>
     <p></p>
-
     <label for="select">พนักงาน</label>
-    <select class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">เลือกพนักงาน</option>
-        <option *ngFor="let item of employee" value='item'>{{item.EmployeeName}}</option>
-    </select>
+    <mat-select class="browser-default custom-select mb-4" [(value)]="selected" >
+        <mat-option>เลือกพนักงาน</mat-option>
+      <mat-option *ngFor="let item of employee"  [value]="item">{{item.EmployName}} </mat-option>
+    </mat-select>
 
-    <label for="select">งานที่ทำเมื่อวาน</label>
-    <select class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">เลือกงาน</option>
-        <option *ngFor="let item of workcate" value='item'>{{item.workcatename}}</option>
-    </select>
-    <button class="btn btn-info btn-block my-4" type="submit">add</button>
-    <div *ngFor='let data of work'>
-        {{data}}
+    <button class="btn btn-info btn-block my-4" type="submit" >add</button>
+    <div *ngFor='let data of employdata'>
+        {{data.EmployName}}
       </div>
-
-
+</form>
+<form class="border border-light p-5" (ngSubmit)='addyesterdaywork(workselected)'>
+    <label for="select">งานที่ทำเมื่อวาน</label>
+    <mat-select class="browser-default custom-select mb-4" [(value)]="workselected" >
+        <mat-option>เลือกพนักงาน</mat-option>
+      <mat-option *ngFor="let item of workcate"  [value]="item">{{item.workcatename}} </mat-option>
+    </mat-select>
+    <button class="btn btn-info btn-block my-4" type="submit">add</button>
+    <div *ngFor='let data of yesterdaywork'>
+        {{data.workcatename}}
+      </div>
+</form>
+<form class="border border-light p-5" (ngSubmit)='addissuework(issueselected)'>
     <label for="select">ปัญหาที่ติด</label>
-    <select class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">เลือกปัญหา</option>
-        <option *ngFor="let item of issue" value='item'>{{item.issuename}}</option>
-    </select>
+    <mat-select class="browser-default custom-select mb-4" [(value)]="issueselected" >
+        <mat-option>เลือกพนักงาน</mat-option>
+      <mat-option *ngFor="let item of issue"  [value]="item">{{item.issuename}} </mat-option>
+    </mat-select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
-    <div *ngFor='let data of addissue'>
-      {{data}}
+    <div *ngFor='let data of issuework'>
+      {{data.issuename}}
     </div>
-
-    <label for="select">งานที่จะทำ</label>
-    <select class="browser-default custom-select mb-4" id="select">
-        <option value="" disabled="" selected="">เลือกงาน</option>
-        <option *ngFor="let item of workcate" value='item'>{{item.workcatename}}</option>
-    </select>
-    <button class="btn btn-info btn-block my-4" type="submit">add</button>
+</form>
+<form class="border border-light p-5" (ngSubmit)='addtodowork(workcateselected)'>
+  <div class='row'>
+    <div class='col-10'>
+    <mat-label>งานที่จะทำ</mat-label>
+    <mat-select class="browser-default custom-select " [(value)]="workcateselected" >
+      <mat-option>เลือกพนักงาน</mat-option>
+      <mat-option *ngFor="let item of workcate"  [value]="item">{{item.workcatename}} </mat-option>
+    </mat-select>
+    </div>
+    <div class='col align-items-center'>
+    <button class="btn btn-info btn-block my-4"  type="submit">add</button>
+    </div>
+    <div *ngFor='let data of todowork'>
+      {{data.workcatename}}
+    </div>
+  </div>
 </form>
