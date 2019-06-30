@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, DropdownModule  } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { TesttableComponent } from './view/testtable/testtable.component';
 import { FilterPipe } from './model/filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -39,11 +42,15 @@ import { FilterPipe } from './model/filter.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    DropdownModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     CdkTreeModule,
     MatPaginatorModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgbModule,
+    NgxPaginationModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

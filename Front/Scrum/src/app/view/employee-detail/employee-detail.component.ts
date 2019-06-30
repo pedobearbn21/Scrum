@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../service/user.service';
 import { Employee } from 'src/app/model/employee/employee';
+import { MatSelectChange } from '@angular/material/select';
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',
@@ -11,12 +12,16 @@ export class EmployeeDetailComponent implements OnInit {
   stockdata =  Employee;
   elements: any = [];
   searchText: string;
+  p = 1;
+  selected = 5;
   headElements = ['id', 'EmployeeName', 'EmployeeEmail'];
   constructor(private userService: UserService) {
     this.getEmployeetDetail();
+    console.log(this.elements.length);
   }
 
   ngOnInit() {
+    console.log(this.selected);
   }
   getEmployeetDetail() {
     this.userService.getEmployeetDetail().then((data: any) => {
