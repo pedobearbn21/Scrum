@@ -12,6 +12,8 @@ export class WorkCateComponent implements OnInit {
   stockdata = Workcate;
   elements: any = [];
   headElements = ['id', 'WorkCateName'];
+  p = 1;
+  selected = 5;
   constructor(private userService: UserService) {
     this.getworkcatedetail();
   }

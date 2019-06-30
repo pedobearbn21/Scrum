@@ -12,29 +12,44 @@
             <button mdbBtn type="button" color="warning" outline="true" size= "sm" (click)='inputModal.show()' mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
         </div>
       </div>
-  
+
   <div class="table-responsive">
     <table mdbTable class="table table-fixed">
       <thead>
       <tr>
         <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
         </th>
+        <th>
+            <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select [(value)]="selected" >
+                  <mat-option value="elements.length">None</mat-option>
+                  <mat-option value="5">5</mat-option>
+                  <mat-option value="10">10</mat-option>
+                  <mat-option value="15">15</mat-option>
+                  <mat-option value="20">20</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let el of elements; let i = index">
+      <tr *ngFor="let el of elements | paginate: { itemsPerPage: selected, currentPage: p }">
         <th scope="row">{{el.id}}</th>
         <td class="red-text">{{el.Status}}</td>
         <td class="clearfix">
-          <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>  
+          <button type="button" mdbBtn color="primary" class="btn btn-warning btn-sm" (click)="basicModal.show();getforupdate(el);" mdbWavesEffect><i class="fas fa-wrench"></i></button>
           <button type="button" class="btn btn-danger btn-sm" (click)='deleteStatusData(el.id)'><i class="far fa-trash-alt"></i></button>
         </td>
       </tr>
       </tbody>
     </table>
+    <div class="text-right">
+        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+      </div>
   </div>
   </div>
-  
+
   <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

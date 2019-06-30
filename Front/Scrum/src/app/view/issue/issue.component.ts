@@ -9,6 +9,8 @@ import { UserService } from '../../service/user.service';
 export class IssueComponent implements OnInit {
   stockdata: any;
   elements: any = [];
+  p = 1;
+  selected = 5;
   headElements = ['id', 'Status'];
   constructor(private userService: UserService) {
     this.getissueDetail();
