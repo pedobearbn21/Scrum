@@ -3,20 +3,24 @@
   <a href="javascript:void(0)" class="closebtn"  (click)="closeNav()">&times;</a>
   <ul>
     <li><a routerLink ="/">หน้าหลัก</a></li>
-    <li>ข่อมูลระบบหลัก
-      <ul>
-        <li><a routerLink ="/app-project-detail">ข้อมูลโปรเจค</a></li>
-        <li><a routerLink ="/app-employee-detail">ข้อมูลพนักงาน</a></li>
-        <li><a routerLink ="/app-work-cate">ประเภทของงาน</a></li>
-        <li><a routerLink ="/app-work-status">สถานะงาน</a></li>
-        <li><a routerLink ="/app-issue">ประเภทของปัญหา</a></li>
-      </ul>
+    <li>
+      <a  (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">ข่อมูลระบบหลัก</a>
+      <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                <ul>
+                    <li><a routerLink ="/app-project-detail">ข้อมูลโปรเจค</a></li>
+                    <li><a routerLink ="/app-employee-detail">ข้อมูลพนักงาน</a></li>
+                    <li><a routerLink ="/app-work-cate">ประเภทของงาน</a></li>
+                    <li><a routerLink ="/app-work-status">สถานะงาน</a></li>
+                    <li><a routerLink ="/app-issue">ประเภทของปัญหา</a></li>
+                </ul>
+        </div>
     </li>
     <li>
       <a routerLink ="/app-save">หน้าบันทึกงาน เทส</a>
     </li>
   </ul>
-  
+
 
 </div>
 <div id="main">
