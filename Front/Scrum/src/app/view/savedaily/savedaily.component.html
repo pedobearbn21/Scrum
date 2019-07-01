@@ -11,9 +11,6 @@
     </mat-select>
 
     <button class="btn btn-info btn-block my-4" type="submit" >add</button>
-    <div *ngFor='let data of employdata'>
-        {{data.EmployName}}
-      </div>
 </form>
 <form class="border border-light p-5" (ngSubmit)='addyesterdaywork(workselected)'>
     <label for="select">งานที่ทำเมื่อวาน</label>
@@ -22,9 +19,6 @@
       <mat-option *ngFor="let item of workcate"  [value]="item">{{item.workcatename}} </mat-option>
     </mat-select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
-    <div *ngFor='let data of yesterdaywork'>
-        {{data.workcatename}}
-      </div>
 </form>
 <form class="border border-light p-5" (ngSubmit)='addissuework(issueselected)'>
     <label for="select">ปัญหาที่ติด</label>
@@ -33,9 +27,6 @@
       <mat-option *ngFor="let item of issue"  [value]="item">{{item.issuename}} </mat-option>
     </mat-select>
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
-    <div *ngFor='let data of issuework'>
-      {{data.issuename}}
-    </div>
 </form>
 <form class="border border-light p-5" (ngSubmit)='addtodowork(workcateselected)'>
   <div class='row'>
@@ -49,8 +40,41 @@
     <div class='col align-items-center'>
     <button class="btn btn-info btn-block my-4"  type="submit">add</button>
     </div>
-    <div *ngFor='let data of todowork'>
-      {{data.workcatename}}
-    </div>
   </div>
 </form>
+<br>
+<div *ngIf="hidden">
+<form>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope='col'>Date</th>
+            <th scope="col">EmployeeName</th>
+            <th scope="col">YesterdayWork</th>
+            <th scope="col">IssueWork</th>
+            <th scope="col">ToDoWork</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              {{ formatted }}
+            </th>
+            <th>
+              <data *ngFor="let item of employdata" >{{item.EmployName}}<br></data>
+            </th>
+            <td>
+                <data scope='row' *ngFor="let item of yesterdaywork" >{{item.workcatename}}<br></data>
+            </td>
+            <td>
+                <data scope='row' *ngFor="let item of issuework" >{{item.issuename}}<br></data>
+            </td>
+            <td>
+                <data scope='row' *ngFor="let item of todowork" >{{item.workcatename}}<br></data>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <button type="button" class="btn btn-outline-warning btn-block" (click)="test()" >Add All To table</button>
+</form>
+</div>

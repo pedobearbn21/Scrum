@@ -12,6 +12,26 @@ export class UserService {
 
   constructor( private http: HttpClient ) { }
 
+  getdaily() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getdaily' )
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  SaveDaily(datavalue) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/savedaily', datavalue, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
   getProjectDeatil() {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getAll' )
