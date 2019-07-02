@@ -44,6 +44,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
   updateData(id, dataform: NgForm) {
     this.userService.updateEmployeeData(dataform, id).then((data: any) => {
+      console.log(data);
       this.getEmployeetDetail();
     });
   }

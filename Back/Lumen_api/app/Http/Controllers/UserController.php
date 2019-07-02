@@ -14,26 +14,13 @@ class UserController extends Controller
      * Create a new controller for User.
      *
      * getall(name) $data=name::all();
-     * 
-     * 
+     *
+     *
      * @return void
      */
     public function __construct()
     {
         //
-    }
-    public function savedaily(Request $request)
-    {
-        $data = new daily();
-        $data->employee = $request->employee;
-        $data->yesterwork = $request->yesterdaywork;
-        $data->issuework = $request->issuework;
-        $data->todowork = $request->todowork;
-    }
-    public function getdaily()
-    {
-        $data = daily::all();
-        return $this->responseSuccess($data);
     }
     public function getAll()
     {

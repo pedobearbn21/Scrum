@@ -41,6 +41,6 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('updateissueData/{id}', 'UserController@updateissueData');
     $router->delete('deleteissueData/{id}', 'UserController@deleteissueData');
 
-    $router->get('getdaily', 'UserController@getdaily');
-    $router->post('savedaily', 'UserController@savedaily');
+    $router->get('getdaily', 'DailyController@getdaily');
+    $router->post('savedaily', 'DailyController@savedaily');
 });

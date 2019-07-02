@@ -60,7 +60,7 @@
           </button>
           <h4 class="modal-title w-100" id="myModalLabel">Update Data</h4>
         </div>
-        <form #data=ngForm (ngSubmit)='updateData(stockdata.id,data.value)'>
+      <form #data=ngForm (ngSubmit)='updateData(stockdata.id, data.value)'>
         <div class="modal-body">
           <div class="md-form">
             <input type="text" name="EmployName" [(ngModel)]="stockdata.EmployName" id="materialLoginFormEmail1" class="form-control" mdbInput>
@@ -74,7 +74,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-          <button type="submit" mdbBtn color="primary" class="btn btn-outline-primary btn-sm m-0 waves-effect" (click)='basicModal.hide()' mdbWavesEffect>Save changes</button>
+          <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)='basicModal.hide()' mdbWavesEffect>Save changes</button>
         </div>
       </form>
       </div>
