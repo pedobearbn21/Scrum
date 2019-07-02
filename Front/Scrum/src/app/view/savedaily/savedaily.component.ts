@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { NgControl } from '@angular/forms';
+import { MatFormFieldControl } from '@angular/material/form-field';
+
 @Component({
   selector: 'app-savedaily',
   templateUrl: './savedaily.component.html',
