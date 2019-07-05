@@ -1,4 +1,3 @@
-
 <form class="border border-light p-5" (ngSubmit)="addemploydata(selected)">
     <button type="button" class="close pull-right" aria-label="Close" routerLink ="/app-save">
         <span aria-hidden="true">×</span>
@@ -13,21 +12,11 @@
 
     <button class="btn btn-info btn-block my-4" type="submit" >add</button>
 </form>
-<form class="form-inline" (ngSubmit)="testdate()" >
-    <div class="form-group">
-      <div class="input-group">
-        <input class="form-control" placeholder="yyyy-mm-dd"
-               name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-        </div>
-      </div>
-    </div>
-    <button type='submit'>Test</button>
-  </form>
-
-  <hr/>
-  <pre>Model: {{ model | json }}</pre>
+<mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
 <form class="border border-light p-5" (ngSubmit)='addyesterdaywork(workselected)'>
     <label for="select">งานที่ทำเมื่อวาน</label>
     <mat-select class="browser-default custom-select mb-4" [(value)]="workselected" >
@@ -66,14 +55,6 @@
     </div>
   </div>
 </form>
-<form class="border border-light p-5" (ngSubmit)='addprojectwork(projectseleted)'>
-    <label for="select">โปรเจค</label>
-    <mat-select class="browser-default custom-select mb-4" [(value)]="projectseleted" >
-        <mat-option>เลือกพนักงาน</mat-option>
-      <mat-option *ngFor="let item of project"  [value]="item">{{item.ProjectName}} </mat-option>
-    </mat-select>
-    <button class="btn btn-info btn-block my-4" type="submit">add</button>
-</form>
 <br>
 <div *ngIf="hidden">
 <form>
@@ -85,13 +66,12 @@
             <th scope="col">YesterdayWork</th>
             <th scope="col">IssueWork</th>
             <th scope="col">ToDoWork</th>
-            <th scope="col">ProjectName</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th>
-              {{  model | json }}
+              {{ formatted }}
             </th>
             <th>
               <data *ngFor="let item of employdata" >{{item.EmployName}}<br></data>
@@ -104,9 +84,6 @@
             </td>
             <td>
                 <data scope='row' *ngFor="let item of todowork" >{{item.workcatename}}<br></data>
-            </td>
-            <td>
-                <data scope='row' *ngFor="let item of projectwork" >{{item.ProjectName}}<br></data>
             </td>
           </tr>
         </tbody>

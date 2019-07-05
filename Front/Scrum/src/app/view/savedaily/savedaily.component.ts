@@ -2,38 +2,27 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { NgControl } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
-
 
 @Component({
   selector: 'app-savedaily',
   templateUrl: './savedaily.component.html',
-  styleUrls: ['./savedaily.component.scss'],
+  styleUrls: ['./savedaily.component.scss']
 })
 export class SavedailyComponent implements OnInit {
-  model;
   a: any;
   employee: any;
   issue: any;
   project: any;
   workcate: any;
   status: any;
-
-
   employdata: any = [];
   yesterdaywork: any = [];
   issuework: any = [];
   todowork: any = [];
-  projectwork: any = [];
-
-
   selected: any;
   workselected: any;
   issueselected: any;
   workcateselected: any;
-  projectseleted: any;
-
-
   hidden = true;
   info: string;
   tester: any;
@@ -41,26 +30,23 @@ export class SavedailyComponent implements OnInit {
   todo: any;
   yesterday: any;
   issueofwork: any;
-  projectsent: any;
   current: any;
-  d: any;
-  format: string;
-
+  formatted: any;
   constructor(private userService: UserService) {
     this.getEmployeetDetail();
     this.getProjectDeatil();
     this.getStatusDetail();
     this.getissueDetail();
     this.getworkcatedetail();
+    this.a = Date();
+    this.current = new Date();
+    this.formatted = this.current.getFullYear() + '-' + (this.current.getMonth() + 1) + '-' + this.current.getDate();
+    console.log(this.a, this.formatted);
   }
 
   ngOnInit() {
   }
   test() {
-    this.format = this.model.year + '-' + this.model.month + '-' + this.model.day;
-    console.log(this.format);
-    this.d = new Date(this.format);
-    console.log(this.d);
     this.info = '';
     for (const data of this.issuework) {
       const peak = this.info + data.issuename + ',';
@@ -73,12 +59,6 @@ export class SavedailyComponent implements OnInit {
       this.info = peak;
     }
     this.employeedata = this.info;
-    this.info = '';
-    for (const data of this.projectwork) {
-      const peak = this.info + data.ProjectName + ',';
-      this.info = peak;
-    }
-    this.projectsent = this.info;
     this.info = '';
     for (const data of this.todowork) {
       const peak = this.info + data.workcatename + ',';
@@ -93,14 +73,10 @@ export class SavedailyComponent implements OnInit {
     this.yesterday = this.info;
     this.tester =
     {
-     date: this.d,
      employee: this.employeedata,
      yesterdaywork: this.yesterday,
      issuework: this.issueofwork,
-     todowork: this.todo,
-     ProjectName: this.projectsent
-    };
-
+     todowork: this.todo};
     console.log(this.tester);
     this.SaveDaily(this.tester);
   }
@@ -111,12 +87,7 @@ export class SavedailyComponent implements OnInit {
 
   }
 
-  testdate() {
-    this.format = this.model.year + '-' + this.model.month + '-' + this.model.day;
-    console.log(this.format);
-    this.d = new Date(this.format);
-    console.log(this.d);
-  }
+
   addemploydata(data) {
     console.log(data);
     this.employdata.push(data);
@@ -130,9 +101,6 @@ export class SavedailyComponent implements OnInit {
   }
   addtodowork(data) {
     this.todowork.push(data);
-  }
-  addprojectwork(data) {
-    this.projectwork.push(data);
   }
   getEmployeetDetail() {
     this.userService.getEmployeetDetail().then((data: any) => {
