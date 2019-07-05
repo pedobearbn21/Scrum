@@ -24,6 +24,7 @@ class DailyController extends Controller
         $data->yesterdaywork = $request->yesterdaywork;
         $data->issuework = $request->issuework;
         $data->todowork = $request->todowork;
+        $data->ProjectName = $request->ProjectName;
         if ($data->save()){
             return $this->responseSuccess($data);
         }

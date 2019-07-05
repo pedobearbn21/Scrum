@@ -13,7 +13,7 @@ class daily extends Model
      */
     protected $table = 'daily';
     protected $fillable = [
-        'employee','yesterdaywork', 'issuework','todowork'
+        'employee','yesterdaywork', 'issuework','todowork','ProjectName'
     ];
     /**
      * The attributes excluded from the model's JSON form.
