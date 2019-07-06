@@ -20,7 +20,7 @@ export class SavedailyComponent implements OnInit {
   status: any;
 
 
-  employdata: any = [];
+  employdata: any;
   yesterdaywork: any = [];
   issuework: any = [];
   todowork: any = [];
@@ -68,12 +68,6 @@ export class SavedailyComponent implements OnInit {
     }
     this.issueofwork = this.info;
     this.info = '';
-    for (const data of this.employdata) {
-      const peak = this.info + data.EmployName + ',';
-      this.info = peak;
-    }
-    this.employeedata = this.info;
-    this.info = '';
     for (const data of this.projectwork) {
       const peak = this.info + data.ProjectName + ',';
       this.info = peak;
@@ -91,10 +85,9 @@ export class SavedailyComponent implements OnInit {
       this.info = peak;
     }
     this.yesterday = this.info;
-    this.tester =
-    {
+    this.tester = {
      date: this.d,
-     employee: this.employeedata,
+     employee: this.employdata,
      yesterdaywork: this.yesterday,
      issuework: this.issueofwork,
      todowork: this.todo,
@@ -118,8 +111,7 @@ export class SavedailyComponent implements OnInit {
     console.log(this.d);
   }
   addemploydata(data) {
-    console.log(data);
-    this.employdata.push(data);
+    this.employdata = data;
     console.log(this.employdata);
   }
   addyesterdaywork(data) {

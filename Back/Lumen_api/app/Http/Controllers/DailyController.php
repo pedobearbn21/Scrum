@@ -34,6 +34,15 @@ class DailyController extends Controller
         $data = daily::all();
         return $this->responseSuccess($data);
     }
+    public function getchart()
+    {
+        $results = ('SELECT count(employee), employee FROM daily GROUP BY employee') ;
+        $data = daily::all()
+                        ->count('employee')
+                        ->groupBy('employee')
+                        ->get();
+        return $this->responseSuccess($data);
+    }
 
     protected function responseSuccess($res)
     {

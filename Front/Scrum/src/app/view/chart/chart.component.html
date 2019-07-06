@@ -6,39 +6,6 @@
            <div style="display: block">
               <canvas mdbChart
                   [chartType]="chartType"
-                  [datasets]="chart[0].chartDatasets"
-                  [labels]="chart[0].chartLabels"
-                  [colors]="chart[0].chartColors"
-                  [options]="chart[0].chartOptions"
-                  [legend]="true"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)">
-              </canvas>
-            </div>
-          </div>
-          <!--Card content-->
-          <mdb-card-body>
-            <!--Title-->
-            <mdb-card-title>
-              <h4>Card Title</h4>
-            </mdb-card-title>
-
-            <!--Text-->
-            <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </mdb-card-text>
-
-            <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
-          </mdb-card-body>
-          </mdb-card>
-  </div>
-  <div class="col">
-      <mdb-card>
-          <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-            <!-- Card img -->
-           <div style="display: block">
-              <canvas mdbChart
-                  [chartType]="chartType"
                   [datasets]="chartDatasets"
                   [labels]="chartLabels"
                   [colors]="chartColors"
@@ -95,6 +62,34 @@
             </mdb-card-text>
 
             <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
+          </mdb-card-body>
+          </mdb-card>
+  </div>
+  <div class='w-100'></div>
+  <div class="col">
+      <mdb-card>
+          <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+            <!-- Card img -->
+           <div style="display: block">
+              <canvas mdbChart
+                  [chartType]="test.chartType"
+                  [datasets]="test.chartDatasets"
+                  [labels]="test.chartLabels"
+                  [colors]="test.chartColors"
+                  [options]="test.chartOptions"
+                  [legend]="true"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+          </div>
+          <!--Card content-->
+          <mdb-card-body>
+            <!--Title-->
+            <mdb-card-title>
+              <h4>Card Title</h4>
+            </mdb-card-title>
+            <button  mdbBtn color="primary" (click)="testdata()"  mdbWavesEffect>Button</button>
           </mdb-card-body>
           </mdb-card>
   </div>
