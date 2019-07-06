@@ -2,7 +2,7 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn"  (click)="closeNav()">&times;</a>
   <ul>
-    <li><a routerLink ="/">หน้าหลัก</a></li>
+    <li><a routerLink ="/app-chart">หน้าหลัก</a></li>
     <li>
       <a  (click)="isCollapsed = !isCollapsed"
       [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">ข่อมูลระบบหลัก</a>
@@ -20,10 +20,10 @@
       <a routerLink ="/app-save">หน้าบันทึกงาน</a>
     </li>
   </ul>
-
-
 </div>
 <div id="main">
   <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
-  <router-outlet></router-outlet>
+  <div class='container'><router-outlet></router-outlet></div>
 </div>
+
+

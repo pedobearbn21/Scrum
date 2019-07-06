@@ -25,7 +25,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { ChartComponent } from './view/chart/chart.component';
+import { ChartModule } from 'angular2-chartjs';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SaveComponent,
     SavedailyComponent,
     TesttableComponent,
-    FilterPipe
+    FilterPipe,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ChartsModule,
+    WavesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

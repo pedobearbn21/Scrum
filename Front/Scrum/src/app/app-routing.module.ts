@@ -7,6 +7,7 @@ import { WorkStatusComponent } from '../app/view/work-status/work-status.compone
 import { IssueComponent } from './view/issue/issue.component';
 import { SavedailyComponent } from './view/savedaily/savedaily.component';
 import { SaveComponent } from './view/save/save.component';
+import { ChartComponent } from './view/chart/chart.component';
 const routes: Routes = [
   { path: 'app-employee-detail', component: EmployeeDetailComponent },
   { path: 'app-project-detail', component: ProjectDetailComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'app-issue', component: IssueComponent },
   { path: 'app-savedaily', component: SavedailyComponent },
   { path: 'app-save', component: SaveComponent },
+  { path: 'app-chart', component: ChartComponent }
 ];
 
 @NgModule({
