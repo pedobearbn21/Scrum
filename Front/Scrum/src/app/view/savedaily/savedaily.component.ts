@@ -43,9 +43,9 @@ export class SavedailyComponent implements OnInit {
   issueofwork: any;
   projectsent: any;
   current: any;
-  d: any;
-  format: string;
-
+  ty: any;
+  format;
+  d;
   constructor(private userService: UserService) {
     this.getEmployeetDetail();
     this.getProjectDeatil();
@@ -57,9 +57,6 @@ export class SavedailyComponent implements OnInit {
   ngOnInit() {
   }
   test() {
-    this.format = this.model.year + '-' + this.model.month + '-' + this.model.day;
-    console.log(this.format);
-    this.d = new Date(this.format);
     console.log(this.d);
     this.info = '';
     for (const data of this.issuework) {
@@ -86,7 +83,7 @@ export class SavedailyComponent implements OnInit {
     }
     this.yesterday = this.info;
     this.tester = {
-     date: this.d,
+     date: this.format,
      employee: this.employdata,
      yesterdaywork: this.yesterday,
      issuework: this.issueofwork,
@@ -109,9 +106,11 @@ export class SavedailyComponent implements OnInit {
     console.log(this.format);
     this.d = new Date(this.format);
     console.log(this.d);
+    console.log(this.model);
   }
   addemploydata(data) {
-    this.employdata = data;
+    console.log(data);
+    this.employdata = data.EmployName;
     console.log(this.employdata);
   }
   addyesterdaywork(data) {

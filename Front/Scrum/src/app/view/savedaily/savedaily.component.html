@@ -1,4 +1,19 @@
-
+<link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+<form class="border border-light p-5" (ngSubmit)="testdate()">
+    <div class="col-xs-12 col-12 col-md-4 form-group">
+        <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+            <button type='submit'>test</button>
+          </div>
+               {{  model | json }}
+    </div>
+</form>
 <form class="border border-light p-5" (ngSubmit)="addemploydata(selected)">
     <button type="button" class="close pull-right" aria-label="Close" routerLink ="/app-save">
         <span aria-hidden="true">×</span>
@@ -13,19 +28,6 @@
 
     <button class="btn btn-info btn-block my-4" type="submit" >add</button>
 </form>
-<form class="form-inline" (ngSubmit)="testdate()" >
-    <div class="form-group">
-      <div class="input-group">
-        <input class="form-control" placeholder="yyyy-mm-dd"
-               name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-        </div>
-      </div>
-    </div>
-    <button type='submit'>Test</button>
-  </form>
-
   <hr/>
   <pre>Model: {{ model | json }}</pre>
 <form class="border border-light p-5" (ngSubmit)='addyesterdaywork(workselected)'>
@@ -91,10 +93,12 @@
         <tbody>
           <tr>
             <th>
-              {{  model | json }}
+              {{  format  }}
             </th>
             <th>
-              <data *ngFor="let item of employdata" >{{item.EmployName}}<br></data>
+              <div *ngIf="employdata">
+                <data scope='row'>{{employdata}}<br></data>
+              </div>
             </th>
             <td>
                 <data scope='row' *ngFor="let item of yesterdaywork" >{{item.workcatename}}<br></data>

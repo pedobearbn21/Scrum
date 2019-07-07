@@ -43,6 +43,8 @@ export class ChartComponent implements OnInit {
       responsive: true
     };
     daily: any;
+    datachart: any;
+    testdate: any = [];
     public chartClicked(e: any): void { }
     public chartHovered(e: any): void { }
   constructor(private userService: UserService) {
@@ -50,25 +52,45 @@ export class ChartComponent implements OnInit {
   }
   ngOnInit() {
   }
+  getchart() {
+    this.userService.getchart().then((data: any) => {
+      this.datachart = data.data;
+      console.log(this.datachart);
+    });
+  }
   getdaily() {
     this.userService.getdaily().then((data: any) => {
       this.daily = data.data;
       console.log(this.daily);
-      this.stackdata();
+      this.getchart();
     });
   }
   testdata() {
+    this.stackdata();
     this.test.chartDatasets = [
-      { data: this.arraytest}
+      { data: this.arraytest, label: 'Test'}
     ];
     this.test.chartLabels = this.labeltest;
+    this.testdatevalid();
   }
   stackdata() {
-    for (const data of this.daily) {
-      const res = data.ProjectName.split(',');
-      this.arraytest.push((res.length) - 1 );
+    for (const data of this.datachart) {
+      const res = data.datacount;
+      this.arraytest.push(data.datacount);
       this.labeltest.push(data.employee);
     }
     console.log(this.arraytest);
+  }
+  testdatevalid() {
+    for (const data of this.daily) {
+      const year = new Date(data.date);
+      console.log(year);
+      const getyear = year.getFullYear();
+      console.log(getyear);
+      if ((getyear > 2018) && (getyear < 2020)) {
+        this.testdate.push(data);
+      }
+    }
+    console.log(this.testdate);
   }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\daily;
+use App\project;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 class DailyController extends Controller
@@ -15,11 +16,11 @@ class DailyController extends Controller
      */
     public function __construct()
     {
-        //
     }
     public function savedaily(Request $request)
     {
         $data = new daily();
+        $data->date = $request->date;
         $data->employee = $request->employee;
         $data->yesterdaywork = $request->yesterdaywork;
         $data->issuework = $request->issuework;
@@ -36,12 +37,15 @@ class DailyController extends Controller
     }
     public function getchart()
     {
-        $results = ('SELECT count(employee), employee FROM daily GROUP BY employee') ;
-        $data = daily::all()
-                        ->count('employee')
-                        ->groupBy('employee')
-                        ->get();
-        return $this->responseSuccess($data);
+        $results = app('db')->select("SELECT COUNT(employee) as datacount ,employee  FROM daily  GROUP BY employee ;");
+        return $this->responseSuccess($results);
+    }
+    public function getprojectyear(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        $results = app('db')->select("SELECT * FROM daily WHERE date BETWEEN $start and $end ");
+        return $this->responseSuccess($results);
     }
 
     protected function responseSuccess($res)

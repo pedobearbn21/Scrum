@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { resolve, reject } from 'q';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,7 +12,26 @@ const httpOptions = {
 export class UserService {
 
   constructor( private http: HttpClient ) { }
-
+  getprojectyear() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getchart')
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+  getchart() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getchart')
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
   getdaily() {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getdaily' )

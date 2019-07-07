@@ -156,8 +156,6 @@ class UserController extends Controller
         return $this->responseSuccess($data);
     }
 
-
-
     public function getissueDetail()
     {
         $data = issue::all();

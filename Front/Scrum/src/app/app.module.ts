@@ -17,7 +17,7 @@ import { SidenavComponent } from './view/sidenav/sidenav.component';
 import { SaveComponent } from './view/save/save.component';
 import { SavedailyComponent } from './view/savedaily/savedaily.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { TesttableComponent } from './view/testtable/testtable.component';
 import { FilterPipe } from './model/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -26,8 +26,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChartComponent } from './view/chart/chart.component';
-import { ChartModule } from 'angular2-chartjs';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +63,9 @@ import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
     MatNativeDateModule,
     MatFormFieldModule,
     ChartsModule,
-    WavesModule
+    WavesModule,
+    NgbDatepickerModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
