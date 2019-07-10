@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, res } from '@angular/common/http';
 import { resolve, reject } from 'q';
-
+import { ChartComponent } from '../view/chart/chart.component';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -12,10 +14,18 @@ const httpOptions = {
 export class UserService {
 
   constructor( private http: HttpClient ) { }
-  showissuechart(datavalue) {
+  showissuechart(datavalue): Observable<any> {
+      return this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/showissuechart', datavalue)
+      .map((resp: HttpResponse) => resp.json());
+
+
+
     console.log(datavalue);
+
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/showissuechart', datavalue )
+
+
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/showissuechart', datavalue)
         .subscribe(data => {
           resolve(data);
         }, error => {

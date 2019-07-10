@@ -49,8 +49,12 @@ class DailyController extends Controller
     }
     public function showissuechart(Request $request)
     {
-        $year = $request->year;
-        $month = $request->month;
+        $year = $request->dateyear;
+        $month = $request->datemonth;
+        echo($year);
+        echo($month);
+        return $this->responseSuccess($year);
+
         $results = app('db')->select("SELECT issuework FROM daily WHERE date like '%$year-$month-__%' ");
         return $this->responseSuccess($results);
     }

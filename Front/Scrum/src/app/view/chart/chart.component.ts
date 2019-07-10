@@ -8,6 +8,9 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+  dataobserb: 
+  year: string;
+  month: any;
   model;
   p = 1;
   selected = 3;
@@ -58,6 +61,7 @@ export class ChartComponent implements OnInit {
     celements: any;
     cemploy: any;
     show: any;
+    datasend: any;
     public chartClicked(e: any): void { }
     public chartHovered(e: any): void { }
   constructor(private userService: UserService, calendar: NgbCalendar) {
@@ -70,9 +74,18 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
   }
   showissuechart(datavalue) {
-    this.userService.showissuechart(datavalue).then((data: any) => {
-      this.show = data.data;
-      console.log('ShowIssue' + this.show);
+    this.year = datavalue.year;
+    this.month = datavalue.month;
+    if (this.month < 10 ) {
+      this.month = '0' + this.month;
+      console.log(this.month);
+    }
+    console.log(this.month);
+    this.datasend = { dateyear: '2018' , datemonth: '05'};
+    console.log(this.datasend);
+    this.userService.showissuechart(this.datasend).then((data: any) => {
+      this.show = data;
+      console.log('ShowIssue', this.show);
     });
   }
   getchart() {
@@ -118,26 +131,5 @@ export class ChartComponent implements OnInit {
       this.labeltest.push(data.employee);
     }
     console.log(this.arraytest);
-  }
-  onDateSelection(date: NgbDate) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
-  }
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
   }
 }
