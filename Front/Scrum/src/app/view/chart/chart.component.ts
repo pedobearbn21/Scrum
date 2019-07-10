@@ -8,7 +8,7 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  dataobserb: 
+  dataobserb:
   year: string;
   month: any;
   model;
@@ -83,6 +83,7 @@ export class ChartComponent implements OnInit {
     console.log(this.month);
     this.datasend = { dateyear: '2018' , datemonth: '05'};
     console.log(this.datasend);
+    this.userService.showissuechart(this.datasend).subscribe((data1) => this.show = data1);
     this.userService.showissuechart(this.datasend).then((data: any) => {
       this.show = data;
       console.log('ShowIssue', this.show);

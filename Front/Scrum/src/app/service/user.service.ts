@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, res } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, re } from '@angular/common/http';
 import { resolve, reject } from 'q';
 import { ChartComponent } from '../view/chart/chart.component';
 import { Observable } from 'rxjs';
