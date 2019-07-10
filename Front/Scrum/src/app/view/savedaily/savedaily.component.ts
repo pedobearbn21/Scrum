@@ -93,6 +93,7 @@ export class SavedailyComponent implements OnInit {
 
     console.log(this.tester);
     this.SaveDaily(this.tester);
+    alert('Add Success!!');
   }
   SaveDaily(datavalue) {
     this.userService.SaveDaily(datavalue).then((data: any) => {
@@ -155,5 +156,7 @@ export class SavedailyComponent implements OnInit {
       this.status = data.data;
     });
   }
+
+  
 
 }

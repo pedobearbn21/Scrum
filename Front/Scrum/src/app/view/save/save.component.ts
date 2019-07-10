@@ -10,12 +10,12 @@ export class SaveComponent implements OnInit {
   a: any;
   daily: any;
   constructor(private userService: UserService) {
-    this.getdaily();
     this.a = Date();
     console.log(this.a);
   }
 
   ngOnInit() {
+    this.getdaily();
   }
   getdaily() {
     this.userService.getdaily().then((data: any) => {

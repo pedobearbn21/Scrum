@@ -13,7 +13,7 @@ export class EmployeeDetailComponent implements OnInit {
   elements: any = [];
   searchText: string;
   p = 1;
-  selected = 5;
+  selected = 3;
   headElements = ['id', 'EmployeeName', 'EmployeeEmail'];
   constructor(private userService: UserService) {
     this.getEmployeetDetail();

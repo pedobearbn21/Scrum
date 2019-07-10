@@ -37,7 +37,7 @@ class DailyController extends Controller
     }
     public function getchart()
     {
-        $results = app('db')->select("SELECT COUNT(employee) as datacount ,employee  FROM daily  GROUP BY employee ;");
+        $results = app('db')->select("SELECT COUNT(ProjectName) as datacount ,employee  FROM daily  GROUP BY employee ;");
         return $this->responseSuccess($results);
     }
     public function getprojectyear(Request $request)
@@ -47,7 +47,13 @@ class DailyController extends Controller
         $results = app('db')->select("SELECT * FROM daily WHERE date BETWEEN $start and $end ");
         return $this->responseSuccess($results);
     }
-
+    public function showissuechart(Request $request)
+    {
+        $year = $request->year;
+        $month = $request->month;
+        $results = app('db')->select("SELECT issuework FROM daily WHERE date like '%$year-$month-__%' ");
+        return $this->responseSuccess($results);
+    }
     protected function responseSuccess($res)
     {
         return response()->json(["status" => "success", "data" => $res], 200)

@@ -12,6 +12,17 @@ const httpOptions = {
 export class UserService {
 
   constructor( private http: HttpClient ) { }
+  showissuechart(datavalue) {
+    console.log(datavalue);
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/showissuechart', datavalue )
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
   getprojectyear() {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getchart')

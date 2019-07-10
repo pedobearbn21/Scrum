@@ -1,68 +1,82 @@
+<div class='container'>
 <div class="row">
+    <div class="col">
+        <mdb-card>
+              <mdb-card-body>
+                  <!--Title-->
+                  <mdb-card-title>
+                    จำนวนโปรเจค :
+                    <h4><mdb-icon fas icon="book"></mdb-icon>&nbsp;&nbsp;&nbsp;{{ celements }}</h4>
+                  </mdb-card-title>
+
+                  <!--Text-->
+                  <mdb-card-text>
+                      <div class="table-responsive">
+                          <table mdbTable class="table">
+                            <thead>
+                            <tr>
+                              <th scope="col">รหัสโปรเจค</th>
+                              <th scope="col">ชื่อโปรเจค</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let el of elements | paginate: { itemsPerPage: selected, currentPage: p1 }">
+                                  <th scope="row">{{el.id}}</th>
+                                  <td class="red-text">{{el.ProjectName}}</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                          <div class="text-right">
+                              <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+                            </div>
+                        </div>
+                  </mdb-card-text>
+
+                  <a routerLink ="/app-project-detail" mdbBtn color="primary" mdbWavesEffect>More...</a>
+                </mdb-card-body>
+            <!--Card content-->
+
+            </mdb-card>
+    </div>
   <div class="col">
       <mdb-card>
-          <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-            <!-- Card img -->
-           <div style="display: block">
-              <canvas mdbChart
-                  [chartType]="chartType"
-                  [datasets]="chartDatasets"
-                  [labels]="chartLabels"
-                  [colors]="chartColors"
-                  [options]="chartOptions"
-                  [legend]="true"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)">
-              </canvas>
-            </div>
-          </div>
+            <mdb-card-body>
+                <!--Title-->
+                <mdb-card-title>
+                  จำนวนพนักงาน :
+                  <h4><mdb-icon fas icon="user"></mdb-icon>&nbsp;&nbsp;&nbsp;{{ cemploy }}</h4>
+                </mdb-card-title>
+
+                <!--Text-->
+                <mdb-card-text>
+                    <div class="table-responsive">
+                        <table mdbTable class="table">
+                          <thead>
+                          <tr>
+                            <th scope="col">รหัสพนักงาน</th>
+                            <th scope="col">ชื่อ</th>
+                            <th scope="col">อีเมล</th>
+
+                          </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let el of employ | paginate: { itemsPerPage: selected, currentPage: p }">
+                                <th scope="row">{{el.id}}</th>
+                                <td class="red-text">{{el.EmployName}}</td>
+                                <td>{{el.EmployEmail}}</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                        <div class="text-right">
+                            <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+                          </div>
+                      </div>
+                </mdb-card-text>
+
+                <a routerLink ="/app-employee-detail" mdbBtn color="primary" mdbWavesEffect>More...</a>
+              </mdb-card-body>
           <!--Card content-->
-          <mdb-card-body>
-            <!--Title-->
-            <mdb-card-title>
-              <h4>Card Title</h4>
-            </mdb-card-title>
 
-            <!--Text-->
-            <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </mdb-card-text>
-
-            <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
-          </mdb-card-body>
-          </mdb-card>
-  </div>
-  <div class="col">
-      <mdb-card>
-          <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-            <!-- Card img -->
-           <div style="display: block">
-              <canvas mdbChart
-                  [chartType]="chartType"
-                  [datasets]="chartDatasets"
-                  [labels]="chartLabels"
-                  [colors]="chartColors"
-                  [options]="chartOptions"
-                  [legend]="true"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)">
-              </canvas>
-            </div>
-          </div>
-          <!--Card content-->
-          <mdb-card-body>
-            <!--Title-->
-            <mdb-card-title>
-              <h4>Card Title</h4>
-            </mdb-card-title>
-
-            <!--Text-->
-            <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </mdb-card-text>
-
-            <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
-          </mdb-card-body>
           </mdb-card>
   </div>
   <div class='w-100'></div>
@@ -89,6 +103,7 @@
             <mdb-card-title>
               <h4>Card Title</h4>
             </mdb-card-title>
+            <!--
             <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
               </ngb-datepicker>
 
@@ -107,7 +122,8 @@
 
               <pre>From: {{ fromDate | json }} </pre>
               <pre>To: {{ toDate | json }} </pre>
-            <button  mdbBtn color="primary" (click)="testdata()"  mdbWavesEffect>Button</button>
+              -->
+            <button  mdbBtn color="primary" (click)="testdatevalid()"  mdbWavesEffect>Button</button>
           </mdb-card-body>
           </mdb-card>
   </div>
@@ -136,14 +152,15 @@
             </mdb-card-title>
 
             <!--Text-->
-            <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-              content.
+            <mdb-card-text>
+                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+              {{model | json}}
             </mdb-card-text>
 
-            <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
+            <button mdbBtn color="submit" (click)="showissuechart(model)" mdbWavesEffect>Button</button>
           </mdb-card-body>
           </mdb-card>
   </div>
+  </div>
 </div>
-
 

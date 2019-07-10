@@ -8,6 +8,10 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+  model;
+  p = 1;
+  selected = 3;
+  p1 = 1;
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
@@ -16,11 +20,10 @@ export class ChartComponent implements OnInit {
   test = new Chart;
     public chartType: string = 'bar';
     public chartDatasets: Array<any> = [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' },
-      { data: [40, 65, 35, 62, 39, 55, 30], label: 'My Second dataset' }
+      { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' }
     ];
 
-    public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+    public chartLabels: Array<any> = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     public chartColors: Array<any> = [
       {
         backgroundColor: [
@@ -49,19 +52,35 @@ export class ChartComponent implements OnInit {
     daily: any;
     datachart: any;
     testdate: any = [];
+    c: number = 0;
+    elements: any;
+    employ: any;
+    celements: any;
+    cemploy: any;
+    show: any;
     public chartClicked(e: any): void { }
     public chartHovered(e: any): void { }
-  constructor(private userService: UserService,calendar: NgbCalendar) {
+  constructor(private userService: UserService, calendar: NgbCalendar) {
     this.getdaily();
     this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10)
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    this.getProjectDeatil();
+
   }
   ngOnInit() {
+  }
+  showissuechart(datavalue) {
+    this.userService.showissuechart(datavalue).then((data: any) => {
+      this.show = data.data;
+      console.log('ShowIssue' + this.show);
+    });
   }
   getchart() {
     this.userService.getchart().then((data: any) => {
       this.datachart = data.data;
       console.log(this.datachart);
+      this.testdata();
+      this.getEmployeetDetail();
     });
   }
   getdaily() {
@@ -71,13 +90,26 @@ export class ChartComponent implements OnInit {
       this.getchart();
     });
   }
+  getProjectDeatil() {
+    this.userService.getProjectDeatil().then((data: any) => {
+      console.log(data);
+      this.elements = data.data;
+      this.celements = this.elements.length;
+    });
+  }
+  getEmployeetDetail() {
+    this.userService.getEmployeetDetail().then((data: any) => {
+      console.log(data);
+      this.employ = data.data;
+      this.cemploy = this.employ.length;
+    });
+  }
   testdata() {
     this.stackdata();
     this.test.chartDatasets = [
       { data: this.arraytest, label: 'Test'}
     ];
     this.test.chartLabels = this.labeltest;
-    this.testdatevalid();
   }
   stackdata() {
     for (const data of this.datachart) {
@@ -86,18 +118,6 @@ export class ChartComponent implements OnInit {
       this.labeltest.push(data.employee);
     }
     console.log(this.arraytest);
-  }
-  testdatevalid() {
-    for (const data of this.daily) {
-      const year = new Date(data.date);
-      console.log(year);
-      const getyear = year.getFullYear();
-      console.log(getyear);
-      if ((getyear > 2018) && (getyear < 2020)) {
-        this.testdate.push(data);
-      }
-    }
-    console.log(this.testdate);
   }
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
@@ -109,7 +129,6 @@ export class ChartComponent implements OnInit {
       this.fromDate = date;
     }
   }
-
   isHovered(date: NgbDate) {
     return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
   }
