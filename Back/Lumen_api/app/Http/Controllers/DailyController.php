@@ -51,10 +51,6 @@ class DailyController extends Controller
     {
         $year = $request->dateyear;
         $month = $request->datemonth;
-        echo($year);
-        echo($month);
-        return $this->responseSuccess($year);
-
         $results = app('db')->select("SELECT issuework FROM daily WHERE date like '%$year-$month-__%' ");
         return $this->responseSuccess($results);
     }

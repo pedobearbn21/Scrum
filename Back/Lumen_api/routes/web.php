@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('getchart', 'DailyController@getchart');
     $router->get('getprojectyear', 'DailyController@getprojectyear');
-    $router->get('showissuechart', 'DailyController@showissuechart');
+    $router->post('showissuechart', 'DailyController@showissuechart');
 
 
     $router->get('getAll', 'UserController@getAll');
