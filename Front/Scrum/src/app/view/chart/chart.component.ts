@@ -61,6 +61,9 @@ export class ChartComponent implements OnInit {
     cemploy: any;
     show: any;
     datasend: any;
+    detail: any;
+    getsomewhere: any = [];
+    datasource: any = [];
     public chartClicked(e: any): void { }
     public chartHovered(e: any): void { }
   constructor(private userService: UserService, calendar: NgbCalendar) {
@@ -68,9 +71,36 @@ export class ChartComponent implements OnInit {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
     this.getProjectDeatil();
+    this.getissueDetail();
 
   }
   ngOnInit() {
+  }
+  chart4() {
+    for (const pa of this.show) {
+      const a =  pa.issuework.split(',');
+      for (const ppa of a) {
+        this.getsomewhere.push(ppa);
+      }
+      console.log(this.getsomewhere);
+    }
+    for (const source of this.detail) {
+      source.value  = 0;
+    }
+    for (const data of this.getsomewhere) {
+      console.log(data);
+      for (const source of this.detail) {
+        console.log(source);
+        if ( data === source.issuename) {
+          source.value = source.value + 1 ;
+          console.log(source);
+        }
+      }
+    }
+    console.log(this.detail);
+    this.chartDatasets = [];
+    
+    this.chartDatasets.push();
   }
   showissuechart(datavalue) {
     this.year = datavalue.year;
@@ -83,8 +113,16 @@ export class ChartComponent implements OnInit {
     this.datasend = { dateyear: this.year , datemonth: this.month};
     console.log(this.datasend);
     this.userService.showissuechart(this.datasend).then((data: any) => {
-      this.show = data;
+      this.show = data.data;
       console.log('ShowIssue', this.show);
+      this.chart4();
+    });
+
+  }
+  getissueDetail() {
+    this.userService.getissueDetail().then((data: any) => {
+      console.log(data);
+      this.detail = data.data;
     });
   }
   getchart() {
