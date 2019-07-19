@@ -20,12 +20,13 @@ export class ChartComponent implements OnInit {
   arraytest: any = [];
   labeltest: any = [];
   test = new Chart;
+  chartopen = false;
     public chartType: string = 'bar';
     public chartDatasets: Array<any> = [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' }
+      { data: [], label: this.month + '/' + this.year}
     ];
 
-    public chartLabels: Array<any> = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    public chartLabels: Array<any> = [];
     public chartColors: Array<any> = [
       {
         backgroundColor: [
@@ -62,45 +63,57 @@ export class ChartComponent implements OnInit {
     show: any;
     datasend: any;
     detail: any;
-    getsomewhere: any = [];
     datasource: any = [];
     public chartClicked(e: any): void { }
     public chartHovered(e: any): void { }
   constructor(private userService: UserService, calendar: NgbCalendar) {
     this.getdaily();
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
     this.getProjectDeatil();
     this.getissueDetail();
-
+    this.fromDate = calendar.getToday();
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
   ngOnInit() {
+
   }
   chart4() {
-    for (const pa of this.show) {
-      const a =  pa.issuework.split(',');
-      for (const ppa of a) {
-        this.getsomewhere.push(ppa);
-      }
-      console.log(this.getsomewhere);
-    }
+    const getsomewhere: any = [];
+    this.chartopen = true;
     for (const source of this.detail) {
       source.value  = 0;
     }
-    for (const data of this.getsomewhere) {
+    for (const pa of this.show) {
+      const a =  pa.issuework.split(',');
+      for (const ppa of a) {
+        getsomewhere.push(ppa);
+      }
+      console.log(getsomewhere);
+    }
+    for (const data of getsomewhere) {
       console.log(data);
       for (const source of this.detail) {
         console.log(source);
         if ( data === source.issuename) {
+          console.log('เข้า');
           source.value = source.value + 1 ;
           console.log(source);
+        } else {
+          console.log('ไม่เข้า');
         }
       }
     }
+    const alongvalue = [];
+    const alonglebel = [];
+    for (const sent of this.detail) {
+      alonglebel.push(sent.issuename);
+      alongvalue.push(sent.value);
+    }
+    this.chartDatasets[0].data = alongvalue;
+    this.chartDatasets[0].label = this.month + '/' + this.year;
+    this.chartLabels = alonglebel;
     console.log(this.detail);
-    this.chartDatasets = [];
-    
-    this.chartDatasets.push();
+    console.log(this.chartLabels);
+    console.log(this.chartDatasets);
   }
   showissuechart(datavalue) {
     this.year = datavalue.year;
