@@ -27,7 +27,7 @@
                             </tbody>
                           </table>
                           <div class="text-right">
-                              <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+                              <pagination-controls (pageChange)="p1 = $event" ></pagination-controls>
                             </div>
                         </div>
                   </mdb-card-text>
@@ -131,7 +131,7 @@
       <mdb-card>
           <div class="view rgba-white-slight waves-light" mdbWavesEffect>
             <!-- Card img -->
-           <div style="display: block">
+           <div style="display: block" *ngIf="chartopen"  >
               <canvas mdbChart
                   [chartType]="chartType"
                   [datasets]="chartDatasets"
@@ -147,18 +147,18 @@
           <!--Card content-->
           <mdb-card-body>
             <!--Title-->
-            <mdb-card-title>
-              <h4>Card Title</h4>
+            <mdb-card-title *ngIf="!chartopen" >
+              <h4>Pick Month</h4>
             </mdb-card-title>
 
             <!--Text-->
             <mdb-card-text>
                 <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-              {{model | json}}
             </mdb-card-text>
 
             <button mdbBtn color="submit" (click)="showissuechart(model)" mdbWavesEffect>Button</button>
           </mdb-card-body>
+
           </mdb-card>
   </div>
   </div>
