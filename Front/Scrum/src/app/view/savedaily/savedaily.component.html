@@ -11,7 +11,6 @@
             </div>
             <button type='submit'>test</button>
           </div>
-               {{  model | json }}
     </div>
 </form>
 <form class="border border-light p-5" (ngSubmit)="addemploydata(selected)">
@@ -28,8 +27,6 @@
 
     <button class="btn btn-info btn-block my-4" type="submit" >add</button>
 </form>
-  <hr/>
-  <pre>Model: {{ model | json }}</pre>
 <form class="border border-light p-5" (ngSubmit)='addyesterdaywork(workselected)'>
     <label for="select">งานที่ทำเมื่อวาน</label>
     <mat-select class="browser-default custom-select mb-4" [(value)]="workselected" >
