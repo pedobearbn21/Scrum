@@ -1,7 +1,7 @@
 
     <div class="row">
         <div class="col">
-            
+
         </div>
         <div class="col-12 col-md-auto">
         </div>
@@ -55,7 +55,7 @@
           </button>
           <h4 class="modal-title w-100" id="myModalLabel">Update Data</h4>
         </div>
-      <form #data=ngForm (ngSubmit)='updateData(stockdata.id, data.value)'>
+      <form #data=ngForm (ngSubmit)='updateData(stockdata.id, stockdata)'>
         <div class="modal-body">
           <div class="md-form">
             <input type="text" name="EmployName" [(ngModel)]="stockdata.EmployName" id="materialLoginFormEmail1" class="form-control" mdbInput>
