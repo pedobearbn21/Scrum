@@ -135,7 +135,7 @@ export class UserService {
   }
   updateEmployeeData(datavalue, id) {
     return new Promise((resolve, reject) => {
-      this.http.put('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/updateEmployee/' + id, datavalue, httpOptions)
+      this.http.put('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/updateEmployeeData/' + id, datavalue, httpOptions)
         .subscribe(data => {
           resolve(data);
         }, error => {
