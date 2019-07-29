@@ -28,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChartComponent } from './view/chart/chart.component';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ListbydayComponent } from './view/listbyday/listbyday.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     SavedailyComponent,
     TesttableComponent,
     FilterPipe,
-    ChartComponent
+    ChartComponent,
+    ListbydayComponent
   ],
   imports: [
     BrowserModule,

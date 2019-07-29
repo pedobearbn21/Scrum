@@ -1,0 +1,24 @@
+    <table class="table responsive">
+        <thead class="black white-text">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope='col'>Yesterdaywork</th>
+            <th scope='col'>Issue</th>
+            <th scope='col'>Todo</th>
+            <th scope="col">ProjectName</th>
+            <th scope=''></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datatablelist">
+            <td>{{item.employee}}</td>
+            <td>{{item.yesterdaywork}}</td>
+            <td>{{item.issuework}}</td>
+            <td>{{item.todowork}}</td>
+            <td>{{item.ProjectName}}</td>
+            <td>
+                <button mdbBtn type="button" color='danger' (click)="dellist(item.id);" size="sm" mdbWavesEffect><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>

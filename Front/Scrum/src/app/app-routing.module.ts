@@ -8,6 +8,7 @@ import { IssueComponent } from './view/issue/issue.component';
 import { SavedailyComponent } from './view/savedaily/savedaily.component';
 import { SaveComponent } from './view/save/save.component';
 import { ChartComponent } from './view/chart/chart.component';
+import { ListbydayComponent } from './view/listbyday/listbyday.component';
 const routes: Routes = [
   { path: 'app-employee-detail', component: EmployeeDetailComponent },
   { path: 'app-project-detail', component: ProjectDetailComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'app-issue', component: IssueComponent },
   { path: 'app-savedaily', component: SavedailyComponent },
   { path: 'app-save', component: SaveComponent },
-  { path: 'app-chart', component: ChartComponent }
+  { path: 'app-chart', component: ChartComponent },
+  { path: 'app-listbyday', component: ListbydayComponent }
 ];
 
 @NgModule({

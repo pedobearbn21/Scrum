@@ -30,6 +30,24 @@ class DailyController extends Controller
             return $this->responseSuccess($data);
         }
     }
+
+    public function getdatedaily()
+    {
+        $data = app('db')->select("SELECT date FROM daily GROUP BY date");
+        return $this->responseSuccess($data);
+    }
+    public function listbyday(Request $request) {
+        $year = $request->year;
+        $month = $request->month;
+        $date = $request->date;
+        $data = app('db')->select("SELECT * FROM daily WHERE date LIKE '%$year-$month-$date%'");
+        return $this->responseSuccess($data);
+    }
+
+    public function dellistbyday($id) {
+        $data = daily::where('id', $id)->delete();
+        return $this->responseSuccess($data);
+    }
     public function getdaily()
     {
         $data = daily::all();
