@@ -2,8 +2,9 @@
 <form class="border border-light p-5">
     <div class="col-xs-12 col-12 col-md-4 form-group">
         <div class="form-group">
+          <h6>เลือกวันที่</h6>
             <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"
+              <input  id = 'pickdate'class="form-control" placeholder=""
                      name="dp" [(ngModel)]="model"  ngbDatepicker #d="ngbDatepicker">
               <div class="input-group-append">
                   <button mdbBtn  color='deep-purple' (click)="d.toggle()" size='sm' type='submit'><mdb-icon far icon="calendar-alt"></mdb-icon></button>
