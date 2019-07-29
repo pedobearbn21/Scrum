@@ -170,7 +170,7 @@ export class ChartComponent implements OnInit {
   testdata() {
     this.stackdata();
     this.test.chartDatasets = [
-      { data: this.arraytest, label: 'Test'}
+      { data: this.arraytest, label: 'จำนวนการบันทึก'}
     ];
     this.test.chartLabels = this.labeltest;
   }

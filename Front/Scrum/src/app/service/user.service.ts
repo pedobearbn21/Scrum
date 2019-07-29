@@ -283,6 +283,38 @@ export class UserService {
   }
 
 
+  getlistbyday(date) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/listbyday' , date, httpOptions)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+  getdatedaily() {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/getdatedaily')
+      .subscribe(data => {
+        resolve(data);
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+  dellistbyday(id) {
+    return new Promise((resolve, reject) => {
+      this.http.delete('http://localhost/Project/Scrum/Back/Lumen_api/public/api/v1/dellistbyday/' + id, httpOptions)
+      .subscribe(data => {
+        resolve(data);
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+
 
 
 

@@ -1,13 +1,4 @@
 <div class="container">
-  <div class="row">
-      <div class="col">
-      </div>
-      <div class="col-12 col-md-auto">
-      </div>
-      <div class="col col-lg-2" style="margin: auto;">
-          <button mdbBtn type="button" color="warning" outline="true" size= "sm" (click)='inputModal.show()' mdbWavesEffect><mdb-icon far icon="plus-square"></mdb-icon></button>
-      </div>
-    </div>
 
 <div class="table-responsive">
   <table mdbTable class="table">
@@ -26,6 +17,9 @@
                 <mat-option value="20">20</mat-option>
               </mat-select>
             </mat-form-field>
+      </th>
+      <th>
+          <button (click)='inputModal.show()' type="button" mdbBtn color="pink"  rounded="true" size="md">Add<mdb-icon fas icon="plus" class="ml-2 " aria-hidden="true"></mdb-icon></button>
       </th>
     </tr>
     </thead>
