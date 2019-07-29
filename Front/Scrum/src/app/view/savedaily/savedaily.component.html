@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+
 <form class="border border-light p-5">
+    <button type="button" class="close pull-right" aria-label="Close" routerLink ="/app-save">
+      <span aria-hidden="true">×</span>
+  </button>
     <div class="col-xs-12 col-12 col-md-4 form-group">
         <div class="form-group">
           <h6>เลือกวันที่</h6>
@@ -15,9 +19,6 @@
     </div>
 </form>
 <form class="border border-light p-5" (ngSubmit)="addemploydata(selected);testdate();">
-    <button type="button" class="close pull-right" aria-label="Close" routerLink ="/app-save">
-        <span aria-hidden="true">×</span>
-    </button>
     <div class="h4 mb-4 text-center" ></div>
     <p></p>
     <label for="select">พนักงาน</label>
@@ -45,18 +46,12 @@
     <button class="btn btn-info btn-block my-4" type="submit">add</button>
 </form>
 <form class="border border-light p-5" (ngSubmit)='addtodowork(workcateselected)'>
-  <div class='row'>
-    <div class='col-10'>
     <mat-label>งานที่จะทำ</mat-label>
-    <mat-select class="browser-default custom-select " [(value)]="workcateselected" >
+    <mat-select class="browser-default custom-select mb-4 " [(value)]="workcateselected" >
       <mat-option>เลือกพนักงาน</mat-option>
       <mat-option *ngFor="let item of workcate"  [value]="item">{{item.workcatename}} </mat-option>
     </mat-select>
-    </div>
-    <div class='col align-items-center'>
     <button class="btn btn-info btn-block my-4"  type="submit">add</button>
-    </div>
-  </div>
 </form>
 <form class="border border-light p-5" (ngSubmit)='addprojectwork(projectseleted)'>
     <label for="select">โปรเจค</label>
